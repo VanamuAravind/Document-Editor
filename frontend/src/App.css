@@ -1,0 +1,84 @@
+:root{
+  --grey: rgb(31, 31, 31);
+  --grey1: rgba(63, 63, 63, 0.623);
+  --lightgrey: rgba(31, 31, 31, 0.856);
+  --white:white;
+  --black:rgb(14, 14, 14);
+  --white1:rgb(154, 154, 154);
+  --blue:rgb(43, 149, 241);
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: white;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+
+
+.App{
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  background-color: var(--black);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.Main-Canvas{ 
+  position: relative;
+  /* overflow: hidden; */
+  width: 90vw;
+  height: 75vh;
+}
+
+.main-canvas-container{
+  background-color: var(--grey);
+  border-radius: 5px;
+  border: 1px solid var(--white1);
+  margin-top: 20px;
+  overflow: scroll;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+.zoom-controlls{
+  position: fixed;
+  left: 10px;
+  top: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.zoom-controlls i{
+  padding: 10px;
+  background-color: var(--grey1);
+  color: var(--white1);
+  border-radius: 4px;
+  z-index: 1000;
+}
+.zoom-controlls i:hover{
+  background-color: var(--blue);
+  color: var(--white);
+  cursor: pointer;
+}

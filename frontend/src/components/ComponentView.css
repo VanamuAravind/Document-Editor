@@ -1,0 +1,78 @@
+.ComponentView-main-container{
+    position: fixed;
+    width: 20vw;
+    height: 100vh;
+    background-color: white;
+    right: 0px;
+    transform: translateX(100%);
+    z-index: 5000;
+    transition: all 0.2s;
+    background-color: var(--grey);
+    box-shadow: 0px 0px 15px grey;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    gap: 10px;
+    padding-left: 20px;
+    padding-top: 20px;
+}
+
+.ComponentView-main-container i{
+    padding: 10px 12px;
+    background-color: var(--white1);
+    border-radius: 50%;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+.ComponentView-main-container>div>div{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    margin-left: 20px;
+    position: relative;
+    overflow: hidden;
+}
+.ComponentView-main-container>div>label{
+    font-size: 20px;
+    font-weight: bolder;
+    color: rgb(3, 162, 183);
+}
+.ComponentView-main-container>div>div>label{
+    font-size: 17px;
+    color: rgb(3, 162, 183);
+    font-weight: 650;
+    padding: 5px 10px;
+    border-radius: 4px;
+    position: relative;
+    margin-left: 20px;
+}
+.inside-line{
+    position: absolute;
+    left: 0px;
+    top: 3px;
+    width: 2px;
+    height: 100vh;
+    background-color: rgb(9, 215, 167);
+}
+.ComponentView-main-container>div>div>label::before{
+    content: "";
+    width: 15px;
+    height: 2px;
+    background-color: rgb(9, 215, 167);
+    position: absolute;
+    left: 0px;
+    top: 50%;
+    transform: translateX(-120%);
+}
+.ComponentView-main-container>div>div>label:hover{
+    background-color: var(--grey1);
+}
+
+.divider{
+    width: 95%;
+    height: 1px;
+    background-color: rgba(9, 215, 167, 0.735);
+}
