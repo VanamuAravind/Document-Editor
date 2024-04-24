@@ -1,10 +1,41 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
 import './Home.css'
 const Home = () => {
   const navigate=useNavigate()
   const l=[1,2,3,4,5,6,7,8,9,2,3,4,5,6,7,8,]
   const [logout,setLogout]=useState(false)
+  const [recentDocs,setRecentDocs]=useState([])
+
+
+  useEffect(()=>{
+    const user_id=localStorage.getItem("user")
+    axios.post("http://localhost:7000/api/getdocuments",{user_id:user_id})
+    .then(res=>{
+      const curr=res.data
+      console.log(curr) 
+      var docs=new Set()
+      for(let i=0;i<curr.length;i++){
+        const filename=curr[i].fileName
+        const date=curr[i].date
+        if(!docs.has(filename))
+        {
+          docs.add(filename)
+          const obj={
+            "filename":filename,
+            "date":date
+          }
+          setRecentDocs(prev=>[...prev,obj])
+        }
+      }
+      console.log(recentDocs)
+    })
+    .catch(error=>{
+      console.log(error)
+    })
+  },[])
+
   function deleteToken(){
     localStorage.removeItem("token")
     localStorage.removeItem("user")
@@ -36,13 +67,13 @@ const Home = () => {
         <div className='span-divider'></div>
           <div className='all-documents-scroll-container'>
             {
-              l.map(i=>{
-                return (
+              recentDocs.map((data,i)=>{
+                return (i<recentDocs.length/2)? (
                   <div className='document'>
-                    <label> <i class="fa-solid fa-clock-rotate-left"></i> Untitled1</label>
-                    <label>date : 3/27/2024</label>
+                    <label> <i class="fa-solid fa-clock-rotate-left"></i> {data.filename}</label>
+                    <label>date : {data.date}</label>
                   </div>
-                )
+                ):null
               })
             }
           </div>

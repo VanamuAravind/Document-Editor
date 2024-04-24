@@ -1,7 +1,24 @@
 import React, { useState } from 'react'
 import './Tools.css'
+import FileWindow from './FileWindow'
 const Tools = (props) => {
+    const [filename,setFilename]=useState("Untitled")
     const [currOption,setCurrOption] = useState("Home")
+    const [inputStyle,setInputStyle]=useState()
+    const [isFileWindowOpen,setIsFileWindowOpen]=useState(false)
+
+    useState(()=>{
+        setInputStyle({
+            position:"absolute",
+            width:"100%",
+            height:"100%",
+            zIndex:"10",
+            left:"0px",
+            top:"0px",
+            visibility:"hidden"
+        })
+    },[])
+
     const col="rgb(43, 149, 241)"
     const [curr,setCurr]=useState({
         "Home":"blue",
@@ -20,10 +37,42 @@ const Tools = (props) => {
         }
         setCurr(obj)
     }
+    function changeFileName(e){
+        if(e===0){
+            setInputStyle({
+                position:"absolute",
+                width:"100%",
+                height:"100%",
+                zIndex:"10",
+                left:"0px",
+                top:"0px",
+                visibility:"visible"
+            })
+        }
+        if(e===1){
+            setInputStyle({
+                position:"absolute",
+                width:"100%",
+                height:"100%",
+                zIndex:"10",
+                left:"0px",
+                top:"0px",
+                visibility:"hidden"
+            })
+        }
+    }
+
+    function closeFileWindow(){
+        setIsFileWindowOpen(false)
+    }
+    function changeFileName(rename){
+        setFilename(rename)
+    }
   return (
     <div className='tools-main-container'>
       <div className='tools-top'>
-        <label>File Name</label>
+        {/* <label style={{position:"relative"}} onDoubleClick={changeFileName(0)}>{filename} <input type='text' placeholder='fileName' style={inputStyle} onKeyDown={changeFileName(1)} onChange={(e)=>setFilename(e.target.value)}/> </label> */}
+        <label style={{width:"100px"}}>FileName({filename})</label>
         <div className='tools-top-search'>
             <i class="fa-solid fa-magnifying-glass"></i>
             <input placeholder='search for tools, tags of textFields, etc.' type='text'/>
@@ -34,8 +83,10 @@ const Tools = (props) => {
       </div>
       <div className='tools-options'>
         <div className='tools-options-left'>
+            <FileWindow isopen={isFileWindowOpen} closeWindow={closeFileWindow} onSave={props.onSave} changeFileName={changeFileName} filename={filename}/>
             <label onClick={()=>{
-
+                // props.onSave()
+                setIsFileWindowOpen(!isFileWindowOpen)
             }}>File</label>
             <label style={{borderColor:curr.Home}} onClick={()=>{
                 setCurrOption("Home")

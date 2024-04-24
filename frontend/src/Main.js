@@ -4,6 +4,7 @@ import DynamicEditText from './components/DynamicEditText';
 import ImageComp from './components/ImageComp'
 import Tools from './components/Tools';
 import ComponentView from './components/ComponentView';
+import axios from 'axios'
 
 function Main() {
   const [textBool, setTextBool] = useState(false);
@@ -113,8 +114,24 @@ function Main() {
   }
 
 
-  
 
+  function onSave(filename){
+    const fileName=filename
+    // const user_id=localStorage.getItem("user")
+    const txtFields = textFieldDetails
+    const user_id=localStorage.getItem("user")
+
+    try {
+      axios.post("http://localhost:7000/api/savedocument",{fileName:fileName,textFields:txtFields,user_id:user_id})
+      .then(res=>{
+        console.log(res.data)
+        alert("file saved successfully")
+      })
+    } catch (error) {
+      console.log("error has occured")
+      console.log(error)
+    }
+  }
 
   function handleMouseDown(e) {
     if (textBool && inCanvas) {
@@ -146,6 +163,7 @@ function Main() {
         "x":x,
         "y":y
       }
+      
       setImageFieldDetails((prev)=>[...prev,imgobj])
 
     }
@@ -192,7 +210,7 @@ function Main() {
         ):null
       }
 
-      <Tools setOpen={setOpen} isAddImageClicked={isAddImageClicked} isTextFieldClicked={isTextFieldClicked} />
+      <Tools onSave={onSave} setOpen={setOpen} isAddImageClicked={isAddImageClicked} isTextFieldClicked={isTextFieldClicked} />
       <ComponentView allImageTitles={imageFieldDetails} allTextFieldsTitles={textFieldDetails} isopen={isopen} setOpen={setOpen}/>
         <div className='zoom-controlls'>
         

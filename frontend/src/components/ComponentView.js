@@ -45,7 +45,7 @@ const ComponentView = (props) => {
           <div className='inside-line'></div>
           {
             allTextFieldsTitles.map((textField)=>{
-              return <label style={{color:(textField.colour!==0)?colours[textField.colour]:"rgb(3, 162, 183)"}}>{textField.title}{textField.x}{textField.y}</label>
+              return <label style={{color:(textField.colour!==0)?colours[textField.colour]:"rgb(3, 162, 183)"}}>{textField.title}</label>
             })
           }
         </div>
@@ -59,7 +59,7 @@ const ComponentView = (props) => {
           <div className='inside-line'></div>
           {
               allImages.map((imageField)=>{
-                  return <label style={{color:(imageField.colour!==0)?colours[imageField.colour]:"rgb(3, 162, 183)"}}>{imageField.title}{imageField.x}{imageField.y}</label>
+                  return <label style={{color:(imageField.colour!==0)?colours[imageField.colour]:"rgb(3, 162, 183)"}}>{imageField.title}</label>
               })
           }
         </div>

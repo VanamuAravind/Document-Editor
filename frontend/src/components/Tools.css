@@ -110,3 +110,7 @@ label{
     background-color: var(--grey);
     cursor: pointer;
 }
+
+.tools-options-left{
+    position: relative;
+}

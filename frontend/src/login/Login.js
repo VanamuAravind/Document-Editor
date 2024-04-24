@@ -26,7 +26,8 @@ const Login = () => {
             else{//for register
                 const url="http://localhost:7000/api/users"
                 const {data}=await axios.post(url,{firstName:fname,lastName:lname,email:email,password:password})
-                console.log(data)
+                setIsLogin(!isLoginn)
+                alert("user created")
             }
             
         } catch (error) {

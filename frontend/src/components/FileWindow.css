@@ -1,0 +1,55 @@
+.fileWindow-main-container{
+    background-color: #282928;
+    width: 50vw;
+    height: 100vh;
+    box-shadow: 5px 0px 10px rgba(67, 67, 67, 0.737);
+    position: fixed;
+    left: 0;
+    top: 0;
+    transition: all 0.2s ease-in-out;
+    display: flex;
+    z-index: 10000;
+}
+.filewindow-left{
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    height: 100vh;
+    background-color: black;
+    align-items: start;
+    justify-content: start;
+    padding: 10px;
+    gap: 10px;
+}
+.filewindow-left div{
+    display: flex;
+    width: 100%;
+    padding: 10px;
+    align-items: center;
+    justify-content: start;
+    gap: 20px;
+    border-radius: 6px;
+    color: white;
+}
+.filewindow-left div:hover{
+    background-color: #282928;
+}
+
+.filewindow-right{
+    flex: 1;
+    padding: 20px;
+}
+.filewindow-renamefile{
+    width: 100%;
+    height: fit-content;
+}
+.filewindow-renamefile input{
+    width: 200px;
+    height: 30px;
+    border-radius: 6px;
+    border: none;
+    outline: none;
+    background-color: black;
+    padding-left: 10px;
+    color: white;
+}
